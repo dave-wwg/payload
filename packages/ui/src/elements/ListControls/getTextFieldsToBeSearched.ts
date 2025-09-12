@@ -15,7 +15,9 @@ export const getTextFieldsToBeSearched = (
       moveSubFieldsToTop: true,
     }) as ClientField[]
 
-    const searchableFieldNames = new Set(listSearchableFields)
+    const searchableFieldNames = new Set(
+      listSearchableFields.map((field) => field.split('.').shift()),
+    )
     const matchingFields: typeof flattenedFields = []
 
     for (const field of flattenedFields) {
